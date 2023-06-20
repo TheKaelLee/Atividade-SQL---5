@@ -1,0 +1,21 @@
+1 SELECT j.job_title
+FROM jobs AS j
+WHERE j.job_id NOT IN (SELECT DISTINCT job_id FROM employees);
+
+
+
+2 SELECT 'Continente' AS description_type, region_name AS description
+FROM continents
+UNION ALL
+SELECT 'Pais' AS description_type, country_name AS description
+FROM countries
+UNION ALL
+SELECT 'Cidade' AS description_type, city_name AS description
+FROM cities
+ORDER BY description;
+
+
+
+3 SELECT employee_code, CONCAT(first_name, ' ', last_name) AS employee_name
+FROM employees
+WHERE employee_id NOT IN (SELECT DISTINCT manager_id FROM employees);
